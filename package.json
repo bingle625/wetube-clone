@@ -1,0 +1,16 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "The best way to watch video",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bingle625/wetube-clone.git"
+  },
+  "author": "bingle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bingle625/wetube-clone/issues"
+  },
+  "homepage": "https://github.com/bingle625/wetube-clone#readme"
+}
