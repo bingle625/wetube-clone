@@ -17,7 +17,8 @@
   "homepage": "https://github.com/bingle625/wetube-clone#readme",
   "dependencies": {
     "@babel/node": "^7.16.8",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.2",
