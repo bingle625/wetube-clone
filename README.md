@@ -99,7 +99,7 @@ app.use("/users", userRouter);
 3. router에서 어떤 url을 get하면 핸들러로 연결해주고
 4. app자체에서 어떤 url을 get하면 router로 연결해준다.
 
-# 4.1 Cleaning the Code
+# 4.2 Cleaning the Code
 
 각 라우터를 파일로 분리해주고, server.js파일에서 해당 라우터 파일을 import 해오는 방식으로 코드를 정리했다.
 
@@ -121,4 +121,30 @@ const handleWatchVideo = (req, res) => res.send("Watch Video");
 videoRouter.get("/watch", handleWatchVideo);
 
 export default videoRouter;
+```
+
+# 4.3 Exports
+
+router로부터 controller도 분리해주고, controller에서 여러개의 함수를 import해오기 위해 default export가 아닌, 함수 앞에 직접 export를 붙여주고, import 해올 때에도 객체로 여러개를 한꺼번에 받아오는 방식으로 import를 했다.
+
+다만 이 방식의 경우 default의 경우와 다르게 import 시 import한 함수의 이름을 마음대로 바꿀 수 없다.
+
+```jsx
+export const join = (req, res) => res.send("Join");
+export const edit = (req, res) => res.send("Edit User");
+export const remove = (req, res) => res.send("Remove User");
+
+export default join;
+```
+
+```jsx
+import express from "express";
+import { edit, remove } from "../controllers/userController";
+
+const userRouter = express.Router();
+
+userRouter.get("/edit", edit);
+userRouter.get("/remove", remove);
+
+export default userRouter;
 ```
