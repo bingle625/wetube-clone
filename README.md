@@ -1,5 +1,11 @@
 # youtube clone
 
+## 목차
+
+1. [4장](#40-what-is-routers)
+
+---
+
 # 4.0 What is Routers?
 
 router는 컨트롤러와 url의 관리를 쉽게 해줌.
@@ -52,3 +58,43 @@ router는 컨트롤러와 url의 관리를 쉽게 해줌.
 이게 바로 라우터가 하는 일이다.
 
 url을 작업중인 주제를 기준으로 그룹화 해주는 것이다.
+
+# 4.1 Making Our Routers
+
+```
+/ -> home
+/join -> Join
+/login -> Login
+/search -> Search
+```
+
+먼저 이 글로벌 라우터에 대해 따져보자면,
+
+행동을 하는 주체가 user이거나 목적이 video이기 때문에, 주체에 따라 url을 그룹화 해주자는 위의 논리에 조금 어긋날 수 있다.
+
+이는, 일부 예외를 만든 것인데, 약간의 마케팅적 목적 혹은, url의 간결함이 중요한 url에 대해 목적을 어겨주는 것이다.
+
+```jsx
+//Router 생성
+const userRouter = express.Router();
+
+//Router 사용 준비
+app.use("/users", userRouter);
+```
+
+```jsx
+const userRouter = express.Router();
+
+const handleEditUser = (req, res) => res.send("Edit User");
+
+userRouter.get("/edit", handleEditUser);
+
+app.use("/users", userRouter);
+```
+
+즉, 위 코드 처럼
+
+1. router를 만들고
+2. 핸들러를 만들고
+3. router에서 어떤 url을 get하면 핸들러로 연결해주고
+4. app자체에서 어떤 url을 get하면 router로 연결해준다.
