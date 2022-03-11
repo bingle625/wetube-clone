@@ -98,3 +98,27 @@ app.use("/users", userRouter);
 2. 핸들러를 만들고
 3. router에서 어떤 url을 get하면 핸들러로 연결해주고
 4. app자체에서 어떤 url을 get하면 router로 연결해준다.
+
+# 4.1 Cleaning the Code
+
+각 라우터를 파일로 분리해주고, server.js파일에서 해당 라우터 파일을 import 해오는 방식으로 코드를 정리했다.
+
+nodejs에서 각 js 파일은 모듈이며, 거품과 같고 각 js파일이 독립된 채로 private한 상태이다.
+
+따라서 각 모듈에서 다른 모듈을 사용하기 위해서는 export와 import가 필요하다.
+
+라우터 js파일에는
+
+라우터와 핸들러, 라우터의 get함수가 들어가 있다.
+
+```jsx
+import express from "express";
+
+const videoRouter = express.Router();
+
+const handleWatchVideo = (req, res) => res.send("Watch Video");
+
+videoRouter.get("/watch", handleWatchVideo);
+
+export default videoRouter;
+```
