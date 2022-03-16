@@ -1,10 +1,7 @@
-const fakeUser = {
-  username: "HanSeongJae",
-  loggedIn: true,
+export const trending = (req, res) => {
+  const videos = [];
+  res.render("home", { pageTitle: "Home", videos });
 };
-
-export const trending = (req, res) =>
-  res.render("home", { pageTitle: "Home", fakeUser: fakeUser });
 export const see = (req, res) =>
   res.render("watch", { pageTitle: "watch-video" });
 export const edit = (req, res) =>
