@@ -7,7 +7,7 @@
     "url": "git+https://github.com/bingle625/wetube-clone.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/init.js"
   },
   "author": "bingle",
   "license": "ISC",
