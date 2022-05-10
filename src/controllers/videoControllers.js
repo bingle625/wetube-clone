@@ -11,13 +11,14 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
   const videos = await Video.find({});
-  console.log(videos);
   return res.render("home", { pageTitle: "Home", videos });
 };
 
-export const watch = (req, res) => {
+export const watch = async (req, res) => {
   const { id } = req.params;
-  res.render("watch", { pageTitle: `Watching: ` });
+  const video = await Video.findById(id);
+  console.log(video);
+  res.render("watch", { pageTitle: video.title, video });
 };
 export const getEdit = (req, res) => {
   const { id } = req.params;
@@ -28,7 +29,6 @@ export const postEdit = (req, res) => {
   const { id } = req.params;
   const { title } = req.body;
   video.title = title;
-  console.log(req.body);
   return res.redirect(``);
 };
 
@@ -43,12 +43,7 @@ export const postUpload = async (req, res) => {
     await Video.create({
       title,
       description,
-      createdAt: "Date.now()",
       hashtags: hashtags.split(",").map((word) => `#${word}`),
-      meta: {
-        Views: 0,
-        rating: 0,
-      },
     });
     return res.redirect("/");
   } catch (error) {
