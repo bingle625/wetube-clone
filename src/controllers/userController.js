@@ -1,4 +1,5 @@
 import User from "../models/User";
+import * as bcrypt from "bcrypt";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
