@@ -1,7 +1,16 @@
 import User from "../models/User";
 import * as bcrypt from "bcrypt";
 
+/*
+api Number: 1.1 회원가입 페이지 이동
+api Method: GET
+ */
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
+
+/*
+api Number: 1.2 회원가입 요청
+api Method: POST
+ */
 export const postJoin = async (req, res) => {
   const { name, username, email, password, password2, location } = req.body;
   if (password !== password2) {
@@ -35,9 +44,18 @@ export const postJoin = async (req, res) => {
     });
   }
 };
+
+/*
+api Number: 1.3 로그인 페이지 이동
+api Method: GET
+ */
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
+/*
+api Number: 1.4 로그인 요청
+api Method: POST
+*/
 export const postLogin = async (req, res) => {
   const pageTitle = "Login";
   const { username, password } = req.body;
